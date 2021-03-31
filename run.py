@@ -1,5 +1,6 @@
 from flaskapp import create_app,db
 
+
 # Instantiating app to create_app class in __init__.py file
 app = create_app()
 app.app_context().push()

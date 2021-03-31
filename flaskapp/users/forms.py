@@ -3,6 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from flask_login import current_user
 from flaskapp.models import User
 from wtforms.validators import InputRequired, Email, Length,ValidationError
+import re
 
 # LoginForm Class
 # Describing how the validations should be
@@ -26,6 +27,13 @@ class RegisterForm(FlaskForm):
         
     # Email Validation
     def validate_email(self,email):
-        user  = User.query.filter_by(username = email.data).first()
-        if user:
-            raise ValidationError("Email already taken")
+        email = email.data
+        # user  = User.query.filter_by(email = email.data).first()
+        result = re.search(r'@((\w+?\.)+\w+)', email).group(1)
+        standard = "ashesi.edu.gh"
+        if result == standard:
+            pass
+        else:
+            raise ValidationError("Invalid Email.Use Ashesi Email")
+            
+            

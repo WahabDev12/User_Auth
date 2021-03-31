@@ -28,7 +28,7 @@ def create_app(config_class=Config):
     # Importing users Blueprint from routes.py
     from flaskapp.users.routes import users
     
-    #import Blueprints
+    # Register Blueprints
     app.register_blueprint(users)
   
 
